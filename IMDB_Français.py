@@ -47,7 +47,8 @@ while counter < 50:
     next_page = block.find_all('div', class_ = 'desc')[0]
     button = next_page.find('a', class_ = 'lister-page-next next-page').get('href')
     next_website = ('https://www.imdb.com'+ button)
-    page = requests.get(next_website)
+    headers = {'Accept-Language': 'fr-FR,fr;q=0.5'}
+    page = requests.get(next_website, headers=headers)
     Soupe = BS(page.text, 'lxml')
 
     counter += 1
